@@ -11,46 +11,21 @@ jobs:
 
       - setup_remote_docker
 
-      - restore_cache:
-          keys:
-            - v1-{{ .Branch }}
-          paths:
-            - /caches/docker.tar
-
-      - run:
-          name: Load Docker layer cache
-          shell: /bin/sh
-          command: |
-            docker load -i /caches/docker.tar | true
-
       - run:
           name: Build image
           command: |
             TAG=$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM
             IMAGE=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
             docker build \
-              --cache-from=$IMAGE:latest \
               -f Dockerfile \
               -t $IMAGE:$TAG \
               -t $IMAGE:latest \
               .
 
       - run:
-          name: Save Docker layer cache
-          command: |
-            IMAGE=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-            mkdir -p /caches
-            docker save -o /caches/docker.tar $IMAGE:latest
-
-      - save_cache:
-          key: v1-{{ .Branch }}-{{ epoch }}
-          paths:
-            - /caches/docker.tar
-
-      - run:
           name: Push image
           command: |
             TAG=$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM
             IMAGE=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
             docker push $IMAGE:$TAG
