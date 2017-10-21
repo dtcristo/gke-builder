@@ -14,8 +14,8 @@ jobs:
       - run:
           name: Build image
           command: |
-            TAG=$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM
             IMAGE=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+            TAG=$CIRCLE_BUILD_NUM
             docker build \
               -f Dockerfile \
               -t $IMAGE:$TAG \
@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Push image
           command: |
-            TAG=$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM
             IMAGE=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+            TAG=$CIRCLE_BUILD_NUM
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-            docker push $IMAGE:$TAG
+            docker push $IMAGE:$TAG $IMAGE:latest
