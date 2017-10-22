@@ -14,19 +14,19 @@ jobs:
       - run:
           name: Build image
           command: |
-            IMAGE=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+            IMAGE=${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
             TAG=$CIRCLE_BUILD_NUM
             docker build \
               -f Dockerfile \
-              -t $IMAGE:$TAG \
-              -t $IMAGE:latest \
+              -t ${IMAGE}:${TAG} \
+              -t ${IMAGE}:latest \
               .
 
       - run:
           name: Push image
           command: |
-            IMAGE=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+            IMAGE=${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
             TAG=$CIRCLE_BUILD_NUM
-            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-            docker push $IMAGE:$TAG
-            docker push $IMAGE:latest
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            docker push ${IMAGE}:${TAG}
+            docker push ${IMAGE}:latest
