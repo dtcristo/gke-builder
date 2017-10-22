@@ -16,7 +16,6 @@ jobs:
             IMAGE=${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
             TAG=$CIRCLE_BUILD_NUM
             docker build \
-              -f Dockerfile \
               -t ${IMAGE}:${TAG} \
               -t ${IMAGE}:latest \
               .
