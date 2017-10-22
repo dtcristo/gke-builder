@@ -8,7 +8,6 @@ jobs:
 
     steps:
       - checkout
-
       - setup_remote_docker
 
       - run:
@@ -28,5 +27,4 @@ jobs:
             IMAGE=${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
             TAG=$CIRCLE_BUILD_NUM
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-            docker push ${IMAGE}:${TAG}
-            docker push ${IMAGE}:latest
+            docker push ${IMAGE}
