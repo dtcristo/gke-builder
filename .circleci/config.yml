@@ -13,17 +13,13 @@ jobs:
       - run:
           name: Build image
           command: |
-            IMAGE=${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
-            TAG=$CIRCLE_BUILD_NUM
             docker build \
-              -t ${IMAGE}:${TAG} \
-              -t ${IMAGE}:latest \
+              -t dtcristo/gke-builder:${CIRCLE_BUILD_NUM} \
+              -t dtcristo/gke-builder:latest \
               .
 
       - run:
           name: Push image
           command: |
-            IMAGE=${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
-            TAG=$CIRCLE_BUILD_NUM
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-            docker push ${IMAGE}
+            docker push dtcristo/gke-builder
