@@ -27,10 +27,6 @@ Example `.circleci/config.yaml` config:
 version: 2
 jobs:
   build:
-    filters:
-      branches:
-        only: docker
-
     docker:
       - image: dtcristo/gke-builder:latest
 
