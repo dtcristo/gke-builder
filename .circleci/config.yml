@@ -2,13 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: dtcristo/gke-builder:12
+      - image: dtcristo/gke-builder:latest
 
     working_directory: ~/repo
 
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 17.11.0-ce
 
       - run:
           name: Build image
