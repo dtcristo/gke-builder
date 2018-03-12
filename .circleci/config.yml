@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: dtcristo/gke-builder:latest
+      - image: docker:latest
 
     working_directory: ~/repo
 
@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Build image
           command: |
-            gcloud docker -- build \
+            docker build \
               -t dtcristo/gke-builder:${CIRCLE_BUILD_NUM} \
               -t dtcristo/gke-builder:latest \
               .
@@ -21,5 +21,5 @@ jobs:
       - run:
           name: Push image
           command: |
-            gcloud docker -- login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-            gcloud docker -- push dtcristo/gke-builder
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            docker push dtcristo/gke-builder
