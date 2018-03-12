@@ -2,16 +2,13 @@
 FROM google/cloud-sdk:slim
 
 # Update sources
-RUN apt-get update
-
-# Install kubectl
-RUN apt-get install -y kubectl
-
-# Upgrade existing packages
-RUN apt-get upgrade -y
-
-# Clean up after apt
-RUN apt-get clean \
+RUN apt-get update \
+  # Install kubectl
+  && apt-get install -y kubectl \
+  # Upgrade existing packages
+  && apt-get upgrade -y \
+  # Clean up after apt
+  && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install docker-compose
