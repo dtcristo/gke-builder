@@ -4,18 +4,8 @@ FROM google/cloud-sdk:slim
 # Update sources
 RUN apt-get update
 
-# Install new packages
-RUN apt-get install -y \
-  gnupg2 \
-  software-properties-common \
-  kubectl
-
-# Add gpg key and sources for Docker CE
-RUN curl -sSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | apt-key add -
-RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
-
-# Update sources and install Docker CE
-RUN apt-get update && apt-get install -y docker-ce
+# Install kubectl
+RUN apt-get install -y kubectl
 
 # Upgrade existing packages
 RUN apt-get upgrade -y

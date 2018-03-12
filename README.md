@@ -3,9 +3,8 @@ Google Kubernetes Engine (GKE) image builder. A Debian based image for building 
 
 Contains the following command-line tools:
   * [gcloud](https://cloud.google.com/sdk/gcloud/)
-  * [docker](https://docs.docker.com/engine/reference/commandline/cli/)
-  * [docker-compose](https://docs.docker.com/compose/reference/overview/)
   * [kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)
+  * [docker-compose](https://docs.docker.com/compose/reference/overview/)
   * [kompose](http://kompose.io/)
   * [kedge](http://kedgeproject.org/)
 
@@ -58,7 +57,7 @@ jobs:
           command: |
             IMAGE=${GOOGLE_GCR_HOST}/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}
             TAG=$CIRCLE_BUILD_NUM
-            docker build \
+            gcloud docker -- build \
               --cache-from=${IMAGE}:latest \
               -t ${IMAGE}:${TAG} \
               -t ${IMAGE}:latest \
