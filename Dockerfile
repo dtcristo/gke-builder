@@ -33,3 +33,8 @@ RUN curl -sSL https://github.com/docker/compose/releases/download/1.16.1/docker-
 RUN curl -sSL https://github.com/kubernetes/kompose/releases/download/v1.3.0/kompose-linux-amd64 -o kompose \
   && chmod +x kompose \
   && mv kompose /usr/local/bin/kompose
+
+# Install kedge
+RUN curl -sSL curl -L https://github.com/kedgeproject/kedge/releases/download/v0.10.0/kedge-linux-amd64 -o kedge \
+  && chmod +x kedge \
+  && mv kedge /usr/local/bin/kedge
