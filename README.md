@@ -57,7 +57,7 @@ jobs:
           command: |
             IMAGE=${GOOGLE_GCR_HOST}/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}
             TAG=$CIRCLE_BUILD_NUM
-            gcloud docker -- build \
+            docker build \
               --cache-from=${IMAGE}:latest \
               -t ${IMAGE}:${TAG} \
               -t ${IMAGE}:latest \
