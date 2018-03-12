@@ -3,6 +3,7 @@ Google Kubernetes Engine (GKE) image builder. A Debian based image for building 
 
 Contains the following command-line tools:
   * [gcloud](https://cloud.google.com/sdk/gcloud/)
+  * [docker](https://docs.docker.com/engine/reference/commandline/cli/)
   * [kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)
   * [docker-compose](https://docs.docker.com/compose/reference/overview/)
   * [kompose](http://kompose.io/)
