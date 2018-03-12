@@ -1,15 +1,7 @@
-# Based of slim Debian image
-FROM google/cloud-sdk:slim
+FROM google/cloud-sdk:alpine
 
-RUN apt-get update \
-  && apt-get install -y kubectl software-properties-common \
-  && apt-get upgrade -y \
-  && curl -sSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | apt-key add - \
-  && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable" \
-  && apt-get update \
-  && apt-get install -y docker-ce \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+RUN apk add --no-cache docker \
+  && gcloud components install kubectl \
   && curl -sSL https://github.com/docker/compose/releases/download/1.19.0/docker-compose-Linux-x86_64 -o docker-compose \
   && chmod +x docker-compose \
   && mv docker-compose /usr/local/bin/docker-compose \

@@ -1,5 +1,5 @@
 # gke-builder
-Google Kubernetes Engine (GKE) image builder. A Debian based image for building and deploying Docker images from a CI environmnet (such as CircleCI). Based off [google/cloud-sdk:slim](https://hub.docker.com/r/google/cloud-sdk/).
+Google Kubernetes Engine (GKE) image builder. A Alpine Linux based image for building and deploying Docker images from a CI environmnet (such as CircleCI). Based off [google/cloud-sdk:alpine](https://hub.docker.com/r/google/cloud-sdk/).
 
 Contains the following command-line tools:
   * [gcloud](https://cloud.google.com/sdk/gcloud/)
