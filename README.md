@@ -16,6 +16,7 @@ This example assumes you have setup the following environment variables:
   * `GOOGLE_PROJECT_ID` - the ID of your GCP project
   * `GOOGLE_COMPUTE_ZONE` - which compute zone to use by default, e.g. us-central1-a
   * `GOOGLE_CLUSTER_NAME` - the cluster to which deployments will occur
+  * `GOOGLE_GCR_HOST` - GCR hostname, e.g. us.gcr.io
 
 For more configuration details read the following resources:
   * [CircleCI - Running Docker Commands](https://circleci.com/docs/2.0/building-docker-images/)
