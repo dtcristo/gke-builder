@@ -10,4 +10,8 @@ RUN apk add --no-cache docker \
   && mv kompose /usr/local/bin/kompose \
   && curl -sSL https://github.com/kedgeproject/kedge/releases/download/v0.10.0/kedge-linux-amd64 -o kedge \
   && chmod +x kedge \
-  && mv kedge /usr/local/bin/kedge
+  && mv kedge /usr/local/bin/kedge \
+  && curl -sSL https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz -o helm.tar.gz \
+  && tar -zxf helm.tar.gz \
+  && mv linux-amd64/helm /usr/local/bin/helm \
+  && rm -rf helm.tar.gz linux-amd64

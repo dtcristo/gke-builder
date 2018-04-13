@@ -8,6 +8,7 @@ Contains the following command-line tools:
   * [docker-compose](https://docs.docker.com/compose/reference/overview/)
   * [kompose](http://kompose.io/)
   * [kedge](http://kedgeproject.org/)
+  * [helm](https://helm.sh/)
 
 ## Usage
 gke-builder has been tested with CircleCI 2.0. The following CircleCI configuration shows building a Docker image and pushing it to the Google Container Registry.
